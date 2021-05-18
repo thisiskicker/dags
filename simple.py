@@ -17,6 +17,7 @@ def sftp_csv_mongo():
         with sftp.open("file.csv") as f:
             df = pandas.read_csv(f)
             db.collection.insert_many(df.to_dict('records'))
+        sftp.remove("file.csv")
 
 default_args = {
     "owner": "airflow",
