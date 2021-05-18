@@ -32,7 +32,7 @@ default_args = {
 
 # create DAG
 with DAG(
-    "test2",
+    "azure",
     start_date=datetime(2021, 4, 20),
     max_active_runs=1,
     concurrency=1,
