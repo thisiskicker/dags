@@ -14,10 +14,11 @@ def sftp_csv_mongo():
     cnopts.hostkeys = None
     sftp_d = Variable.get("sftp", deserialize_json=True)
     with pysftp.Connection(cnopts=cnopts, host=sftp_d["host"], username=sftp_d["username"], password=sftp_d["password"]) as sftp:
-        with sftp.open("file.csv") as f:
-            df = pandas.read_csv(f)
-            db.collection.insert_many(df.to_dict('records'))
-        sftp.remove("file1.csv")
+        if sftp.isfile("file.csv"):
+            with sftp.open("file.csv") as f:
+                df = pandas.read_csv(f)
+                db.collection.insert_many(df.to_dict('records'))
+            sftp.remove("file2.csv")
 
 default_args = {
     "owner": "airflow",
