@@ -36,7 +36,7 @@ with DAG(
     start_date=datetime(2021, 4, 20),
     max_active_runs=1,
     concurrency=1,
-    schedule_interval="*/5 * * * *",
+    schedule_interval="*/10 * * * *",
     default_args=default_args,
     catchup=False,
 ) as dag:
