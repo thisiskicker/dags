@@ -31,11 +31,11 @@ default_args = {
 
 # create DAG
 with DAG(
-    "test1",
+    "aws",
     start_date=datetime(2021, 4, 20),
     max_active_runs=1,
     concurrency=1,
-    schedule_interval=None,
+    schedule_interval="*/5 * * * *"
     default_args=default_args,
     catchup=False,
 ) as dag:
