@@ -26,7 +26,7 @@ def sftp_csv_mongo():
             with sftp2.open("file.csv") as f:
                 df2 = pandas.read_csv(f)
                 df2['customer_id']=2
-                db.['food'].insert_many(df2.to_dict('records'))
+                db['food'].insert_many(df2.to_dict('records'))
             sftp2.remove("file.csv")
 
 
