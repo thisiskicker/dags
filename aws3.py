@@ -18,6 +18,7 @@ def sftp_csv_mongo():
             with sftp.open("file.csv") as f:
                 df = pandas.read_csv(f)
                 df['customer_id']=1
+                print(df.to_dict('records'))
                 db['food'].insert_many(df.to_dict('records'))
             sftp.remove("file.csv")
     sftp_d2 = Variable.get("sftp2", deserialize_json=True)
@@ -26,6 +27,7 @@ def sftp_csv_mongo():
             with sftp2.open("file.csv") as f:
                 df2 = pandas.read_csv(f)
                 df2['customer_id']=2
+                print(df2.to_dict('records'))
                 db['food'].insert_many(df2.to_dict('records'))
             sftp2.remove("file.csv")
 
