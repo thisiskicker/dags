@@ -22,7 +22,7 @@ def sftp_csv_mongo():
             sftp.remove("file.csv")
     sftp_d2 = Variable.get("sftp2", deserialize_json=True)
     with pysftp.Connection(cnopts=cnopts, host=sftp_d2["host"], username=sftp_d2["username"], password=sftp_d2["password"]) as sftp2:
-        if sft2p.isfile("file.csv"):
+        if sftp2.isfile("file.csv"):
             with sftp2.open("file.csv") as f:
                 df2 = pandas.read_csv(f)
                 df2['customer_id']=1
